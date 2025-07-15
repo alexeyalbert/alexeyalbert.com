@@ -19,7 +19,7 @@
   class="font-helvetica_neue flex min-h-screen flex-col justify-center p-[10px] lg:p-[15px] antialiased bg-fill-secondary-dark dark:bg-fill-secondary text-text-primary dark:text-text-primary-dark"
 >
   <div
-    class="flex flex-grow flex-col px-[20px] xl:px-[65px] pt-[250px] lg:pt-[200px] pb-[65px] w-full rounded-[48px] lg:rounded-2xl bg-fill-secondary dark:bg-fill-secondary-dark"
+    class="flex flex-grow flex-col px-[20px] xl:px-[65px] pt-[250px] lg:pt-[200px] pb-[65px] w-full rounded-[52px] lg:rounded-2xl bg-fill-secondary dark:bg-fill-secondary-dark"
   >
   
     <div class="flex flex-wrap relative">

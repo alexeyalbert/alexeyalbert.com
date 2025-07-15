@@ -85,7 +85,8 @@
         // Adjust these multipliers to change the scale/zoom
         // Lower numbers = more zoomed out (bigger features)
         // Higher numbers = more zoomed in (smaller features)
-        let scale = 20; // You can adjust this value
+        const isMobile = window.innerWidth < 640; // sm breakpoint
+        let scale = isMobile ? 15 : 20; // Slightly smaller scale on mobile for better proportion
         let n = fbm(nx * scale + time * 0.2, ny * scale);
 
         n = Math.pow(n, 1.3); // Increase contrast
@@ -132,8 +133,10 @@
   function updateDimensions() {
     if (parentContainer) {
       // Get parent width and calculate how many characters can fit
-      // Assuming each character is approximately 4px wide
-      width = Math.floor(parentContainer.offsetWidth / 4);
+      // Use different character widths for different screen sizes
+      const isMobile = window.innerWidth < 640; // sm breakpoint
+      const charWidth = isMobile ? 2.5 : 4; // Smaller character width on mobile
+      width = Math.floor(parentContainer.offsetWidth / charWidth);
       // Re-render with new dimensions
       render();
     }
@@ -153,13 +156,16 @@
 </script>
 
 <main
-  class="font-helvetica_neue flex overflow-hidden flex-col justify-center p-[15px] antialiased bg-fill-secondary-dark dark:bg-fill-secondary text-text-primary dark:text-text-primary-dark"
+  class="font-helvetica_neue flex min-h-screen flex-col justify-center p-[10px] lg:p-[15px] antialiased bg-fill-secondary-dark dark:bg-fill-secondary text-text-primary dark:text-text-primary-dark"
 >
   <div
     bind:this={roundedContainer}
-    class="flex flex-col px-[65px] pt-[200px] pb-[65px] w-full rounded-2xl bg-fill-secondary dark:bg-fill-secondary-dark"
+    class="flex flex-grow flex-col px-[20px] xl:px-[65px] pt-[250px] lg:pt-[200px] pb-[65px] w-full rounded-[52px] lg:rounded-2xl bg-fill-secondary dark:bg-fill-secondary-dark"
   >
-    <div bind:this={topContentContainer} class="flex flex-wrap justify-between">
+    <div bind:this={topContentContainer} class="flex flex-wrap relative">
+      <div class="absolute top-0 lg:right-0 -mt-[230px] lg:mt-[30px] pl-[12px]">
+        <Navbar />
+      </div>
       <section class="flex flex-col w-[680px]">
         <h1 class="text-[40px] -tracking-[1.6px]">hey, i'm</h1>
         <img
@@ -185,7 +191,7 @@
         </p>
       </section>
 
-      <Navbar></Navbar>
+      
     </div>
     <div
       bind:this={parentContainer}
@@ -194,7 +200,7 @@
     >
       <pre
         bind:this={container}
-        class="font-mono text-[6.5px] leading-[8px] whitespace-pre select-none overflow-hidden h-[300px] text-text-primary dark:text-text-primary-dark"></pre>
+        class="font-mono text-[4px] sm:text-[6.5px] leading-[5px] sm:leading-[8px] whitespace-pre select-none overflow-hidden h-[300px] text-text-primary dark:text-text-primary-dark"></pre>
     </div>
   </div>
 </main>
