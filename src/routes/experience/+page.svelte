@@ -36,7 +36,7 @@
             experience
           </h2>
           <a
-            download
+            download="Alexey Albert Resume.pdf"
             href={resume}
             class="flex flex-row text-[28px] font-otbulb_mono -tracking-[1.12px] justify-end w-full sm:w-auto"
           >
