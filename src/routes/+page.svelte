@@ -163,7 +163,7 @@
     class="flex flex-grow flex-col px-[20px] xl:px-[65px] pt-[250px] lg:pt-[200px] pb-[65px] w-full rounded-[52px] lg:rounded-2xl bg-fill-secondary dark:bg-fill-secondary-dark"
   >
     <div bind:this={topContentContainer} class="flex flex-wrap relative">
-      <div class="absolute top-0 lg:right-0 -mt-[230px] lg:mt-[30px] pl-[12px]">
+      <div class="absolute top-0 right-0 -mt-[230px] lg:mt-[30px] pl-[12px]">
         <Navbar />
       </div>
       <section class="flex flex-col w-[680px]">

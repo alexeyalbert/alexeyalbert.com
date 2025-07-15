@@ -23,7 +23,7 @@
   >
   
     <div class="flex flex-wrap relative">
-      <div class="absolute top-0 lg:right-0 -mt-[230px] lg:mt-[30px] pl-[12px]">
+      <div class="absolute top-0 right-0 -mt-[230px] lg:mt-[30px] pl-[12px]">
         <Navbar />
       </div>
       <section class="flex flex-col items-center w-full gap-[18px]">
