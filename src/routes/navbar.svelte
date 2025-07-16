@@ -32,20 +32,20 @@
       </a>
     </li>
     <li>
-      <a href="/experience" class="flex mt-[-8px]">
+      <a href="/work" class="flex mt-[-8px]">
         <img
           src={right_chevron_light}
           alt="right chevron"
           class="mt-[8px] mr-[9px] block dark:hidden"
-          class:invisible={$page.url.pathname !== "/experience"}
+          class:invisible={$page.url.pathname !== "/work"}
         />
         <img
           src={right_chevron_dark}
           alt="right chevron"
           class="mt-[8px] mr-[9px] hidden dark:block"
-          class:invisible={$page.url.pathname !== "/experience"}
+          class:invisible={$page.url.pathname !== "/work"}
         />
-        experience
+        work
       </a>
     </li>
     <li>

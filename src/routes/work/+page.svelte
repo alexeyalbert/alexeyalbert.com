@@ -33,7 +33,7 @@
           <h2
             class="ml-[9px] text-[62px] font-otbulb_mono -tracking-[2.48px] -mb-[11px]"
           >
-            experience
+            work
           </h2>
           <a
             download="Alexey Albert Resume.pdf"
@@ -53,7 +53,7 @@
             />
           </a>
         </div>
-        <!-- Experience Card -->
+        <!-- work Card -->
         <!--
         <div
           class="bg-fill-primary dark:bg-fill-primary-dark border-[1px] border-stroke dark:border-stroke-dark rounded-[16px] p-[25px] text-text-primary dark:text-text-primary-dark max-w-[680px] w-full"
@@ -61,7 +61,7 @@
           <!-- Title and Date -->
           <!--
           <h2 class="text-[40px] font-medium -tracking-[1.6px] -mb-[5px]">
-            Experience Title
+            work Title
           </h2>
           <p
             class="text-text-secondary dark:text-text-secondary-dark -tracking-[0.8px] text-[20px] mt-0 mb-[10px]"

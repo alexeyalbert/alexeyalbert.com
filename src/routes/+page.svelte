@@ -179,14 +179,14 @@
           class="hidden object-cover relative mb-[15px] mt-[6px] ml-[5px] w-[580px] dark:invert-0"
         />
         <p class="text-[22px] -tracking-[0.66px]">
-          I'm an enthusiastic student studying Mathematics at the University of
+          I'm an enthusiastic student in second year studying Mathematics at the University of
           Toronto. I'm interested in software, hardware, and design.
         </p>
         <p class="text-[22px] -tracking-[0.66px] mt-[40px]">
-          I'm currently a member of UofT's Robotics for Space Exploration design
-          team, where I've been part of the CanSat competition sub-team, working
+          I'm currently a Jr Lead on the Aerial subteam of UofT's Robotics for Space Exploration design
+          team, where I've been working
           on the camera system, descent control, antenna design, mission patch
-          design, and I'm currently in the process of redesigning the RSX
+          design, and am currently in the process of redesigning the RSX
           website.
         </p>
       </section>
