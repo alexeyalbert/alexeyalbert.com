@@ -1,8 +1,8 @@
 <script lang="ts">
   import Navbar from "./navbar.svelte";
 
-  import name_image_light from "$lib/assets/images/name_light.png";
-  import name_image_dark from "$lib/assets/images/name_dark.png";
+  import name_image_light from "$lib/assets/images/name_light.png?enhanced";
+  import name_image_dark from "$lib/assets/images/name_dark.png?enhanced";
   import { onMount } from "svelte";
 
   let container: HTMLPreElement;
@@ -168,15 +168,17 @@
       </div>
       <section class="flex flex-col w-[680px]">
         <h1 class="text-[40px] -tracking-[1.6px]">hey, i'm</h1>
-        <img
+        <enhanced:img
           src={name_image_light}
           alt="Alexey Albert"
           class="block dark:invert object-cover relative mb-[15px] mt-[6px] ml-[5px] w-[580px]"
+          fetchpriority="high"
         />
-        <img
+        <enhanced:img
           src={name_image_dark}
           alt="Alexey Albert"
           class="hidden object-cover relative mb-[15px] mt-[6px] ml-[5px] w-[580px] dark:invert-0"
+          fetchpriority="high"
         />
         <p class="text-[22px] -tracking-[0.66px]">
           I'm an enthusiastic student in second year studying Mathematics at the University of
@@ -200,7 +202,8 @@
     >
       <pre
         bind:this={container}
-        class="font-mono text-[4px] sm:text-[6.5px] leading-[5px] sm:leading-[8px] whitespace-pre select-none overflow-hidden h-[300px] text-text-primary dark:text-text-primary-dark"></pre>
+        class="font-mono text-[4px] sm:text-[6.5px] leading-[5px] sm:leading-[8px] whitespace-pre select-none overflow-hidden h-[300px] text-text-primary dark:text-text-primary-dark"
+      ></pre>
     </div>
   </div>
 </main>
