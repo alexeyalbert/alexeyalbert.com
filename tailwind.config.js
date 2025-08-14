@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        helvetica_neue: ['Helvetica Neue', 'times new roman'],
-        otbulb_mono: ['OT Bulb Mono', 'times new roman'],
+        helvetica_neue: ['Helvetica Neue', 'apple-system', 'system-ui', 'sans-serif'],
+        otbulb_mono: ['OT Bulb Mono', 'apple-system', 'system-ui', 'sans-serif'],
       },
       colors: {
         fill: {
