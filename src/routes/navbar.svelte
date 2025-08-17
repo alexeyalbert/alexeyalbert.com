@@ -49,7 +49,7 @@
       </a>
     </li>
     <li>
-      <a href="mailto:hello@alexeyalbert.com" class="flex mt-[-8px]">
+      <a href="mailto:hi@alxy.ca" class="flex mt-[-8px]">
         <img
           src={right_chevron_light}
           alt="right chevron"
