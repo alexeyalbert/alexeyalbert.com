@@ -314,7 +314,7 @@ video games during periods of social isolation have a positive correlation with 
               <ul
                 class="text-text-primary dark:text-text-primary-dark -tracking-[0.6px] text-[20px] leading-tight list-disc list-outside pl-[16px] space-y-[10px]"
               >
-                <li>Soley developed and designed a web app that would match registered Spotify users based
+                <li>Solely developed and designed a web app that would match registered Spotify users based
                   on the similarity of their listening activity</li>
                 <li>Developed using HTML/CSS/JS with Node.js, Express, and jQuery. Used MySQL for user info
                   and a vector database (Milvus) to store songs as embeddings in latent space. Hosted on an
