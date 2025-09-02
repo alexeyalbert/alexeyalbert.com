@@ -160,14 +160,14 @@
 >
   <div
     bind:this={roundedContainer}
-    class="flex flex-grow flex-col px-[20px] xl:px-[65px] pt-[250px] lg:pt-[200px] pb-[65px] w-full rounded-[52px] lg:rounded-2xl bg-fill-secondary dark:bg-fill-secondary-dark"
+    class="flex grow flex-col px-[20px] xl:px-[65px] pt-[250px] lg:pt-[200px] pb-[65px] w-full rounded-[52px] lg:rounded-2xl bg-fill-secondary dark:bg-fill-secondary-dark"
   >
     <div bind:this={topContentContainer} class="flex flex-wrap relative">
       <div class="absolute top-0 right-0 -mt-[230px] lg:mt-[30px] pl-[12px]">
         <Navbar />
       </div>
       <section class="flex flex-col w-[680px]">
-        <h1 class="text-[40px] -tracking-[1.6px]">hey, i'm</h1>
+        <h1 class="text-[40px] tracking-tight">hey, i'm</h1>
         <enhanced:img
           src={name_image_light}
           alt="Alexey Albert"
@@ -180,20 +180,18 @@
           class="hidden object-cover relative mb-[15px] mt-[6px] ml-[5px] w-[580px] dark:invert-0"
           fetchpriority="high"
         />
-        <p class="text-[22px] -tracking-[0.66px]">
-          I'm an enthusiastic student in second year studying Mathematics at the University of
-          Toronto. I'm interested in software, hardware, and design.
+        <p class="text-[22px] tracking-tight">
+          I'm a student in second year studying Mathematics, Computer Science,
+          and Statistics at the University of Toronto. I'm also interested in
+          software, hardware, and design.
         </p>
-        <p class="text-[22px] -tracking-[0.66px] mt-[40px]">
-          I'm currently a Jr Lead on the Aerial subteam of UofT's Robotics for Space Exploration design
-          team, where I've been working
-          on the camera system, descent control, antenna design, mission patch
-          design, and am currently in the process of redesigning the RSX
-          website.
+        <p class="text-[22px] tracking-tight mt-[40px]">
+          I'm currently the Jr Lead on the Aerial subteam of UofT's Robotics for
+          Space Exploration design team. Here, I've worked on the camera system,
+          descent control, antenna design, mission patch design, and did a
+          complete redesign of the RSX brand identity and website.
         </p>
       </section>
-
-      
     </div>
     <div
       bind:this={parentContainer}
@@ -202,8 +200,7 @@
     >
       <pre
         bind:this={container}
-        class="font-mono text-[4px] sm:text-[6.5px] leading-[5px] sm:leading-[8px] whitespace-pre select-none overflow-hidden h-[300px] text-text-primary dark:text-text-primary-dark"
-      ></pre>
+        class="font-mono text-[4px] sm:text-[6.5px] leading-[5px] sm:leading-[8px] whitespace-pre select-none overflow-hidden h-[300px] text-text-primary dark:text-text-primary-dark"></pre>
     </div>
   </div>
 </main>

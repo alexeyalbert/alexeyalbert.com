@@ -11,8 +11,8 @@
   } from "@fortawesome/free-brands-svg-icons";
 </script>
 
-<nav class="flex flex-col whitespace-norap text-[30px] -tracking-[1.2px]">
-  <h2 class="self-end font-medium mt-[10px] text-right">directory</h2>
+<nav class="flex flex-col whitespace-norap text-[30px] tracking-tight">
+  <h2 class="self-end font-bold mt-[10px] text-right">directory</h2>
   <ul class="list-none">
     <li class="mt-[5px]">
       <a href="/" class="flex">
@@ -63,7 +63,7 @@
         contact
       </a>
     </li>
-    <div class="flex flex-row items-start justify-between mt-[16px] mx-[10px]">
+    <div class="flex flex-row items-start justify-end mt-[16px] gap-6">
       <a href="https://github.com/alexeyalbert">
         <Fa icon={faGithubAlt} size="24" />
       </a>
