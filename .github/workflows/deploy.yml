@@ -29,7 +29,10 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "build/*"
+          source: |
+            build/*
+            package.json
+            package-lock.json
           target: "${{ secrets.DEPLOY_PATH }}/"
 
       - name: Restart app on server
@@ -40,4 +43,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
+            npm ci --omit=dev
             pm2 reload alexeyalbert.com || pm2 start build/server.js --name alexeyalbert.com
