@@ -15,12 +15,16 @@
 
   const currentUrl = $derived($page.url);
   const siteOrigin = $derived(currentUrl?.origin ?? "");
-  const head = $derived((($page.data as any)?.head ?? {
+  const screenshotImage = $derived(currentUrl?.href
+    ? `https://webshot.deam.io/${encodeURIComponent(currentUrl.href)}?width=1200&height=630`
+    : `${siteOrigin}/web-app-manifest-512x512.png`);
+  const baseHead = $derived({
     title: defaultTitle,
     description: defaultDescription,
-    image: `${siteOrigin}/web-app-manifest-512x512.png`,
+    image: screenshotImage,
     type: "website",
-  }));
+  });
+  const head = $derived({ ...baseHead, ...((($page.data as any)?.head) ?? {}) });
 </script>
 
 <svelte:head>

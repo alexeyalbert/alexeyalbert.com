@@ -3,10 +3,14 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-function extractFirstImageSrc(markdown: string): string | null {
-  const imageRegex = /!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/;
-  const match = markdown.match(imageRegex);
-  return match ? match[1] : null;
+function extractTopImageIfFirstBlock(markdown: string): string | null {
+  const lines = markdown.split(/\r?\n/);
+  let i = 0;
+  while (i < lines.length && lines[i].trim() === "") i++;
+  if (i >= lines.length) return null;
+  const first = lines[i].trim();
+  const m = first.match(/^!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/);
+  return m ? m[1] : null;
 }
 
 function extractDescription(markdown: string): string {
@@ -53,7 +57,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 
   const title = String((frontmatter as any)?.title ?? slug.replace(/[-_]+/g, " "));
   const description = String((frontmatter as any)?.description ?? extractDescription(content));
-  const firstImage = (frontmatter as any)?.image || extractFirstImageSrc(content);
+  const firstImage = (frontmatter as any)?.image || extractTopImageIfFirstBlock(content);
   const imagePath = typeof firstImage === "string" && firstImage
     ? firstImage
     : "/web-app-manifest-512x512.png";
