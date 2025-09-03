@@ -3,6 +3,7 @@
   import type { LayoutData } from "./$types";
   import "../app.css";
   import { page } from "$app/stores";
+  import nameLight from "$lib/assets/images/name_light.png";
 
   let {
     data,

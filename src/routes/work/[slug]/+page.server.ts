@@ -55,7 +55,8 @@ export const load: PageServerLoad = async ({ params, url }) => {
   const raw = fs.readFileSync(mdPath, "utf-8");
   const { content, data: frontmatter } = matter(raw);
 
-  const title = String((frontmatter as any)?.title ?? slug.replace(/[-_]+/g, " "));
+  const titleBase = String((frontmatter as any)?.title ?? slug.replace(/[-_]+/g, " "));
+  const title = `${titleBase} | Alexey Albert`;
   const description = String((frontmatter as any)?.description ?? extractDescription(content));
   const firstImage = (frontmatter as any)?.image || extractTopImageIfFirstBlock(content);
   const imagePath = typeof firstImage === "string" && firstImage
