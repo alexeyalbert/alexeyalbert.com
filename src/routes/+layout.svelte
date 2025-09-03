@@ -48,8 +48,11 @@
   <meta property="og:site_name" content={defaultTitle} />
 
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@alexeyalbert" />
+  <meta name="twitter:creator" content="@alexeyalbert" />
   <meta name="twitter:title" content={head.title} />
   <meta name="twitter:description" content={head.description} />
+  <meta name="twitter:image" content={head.image} />
   <meta name="twitter:image:src" content={head.image} />
 </svelte:head>
 
