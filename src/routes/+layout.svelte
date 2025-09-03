@@ -3,7 +3,7 @@
   import type { LayoutData } from "./$types";
   import "../app.css";
   import { page } from "$app/stores";
-  import nameLight from "$lib/assets/images/name_light.png";
+  import socialsCard from "$lib/assets/images/socials_card.png";
 
   let {
     data,
@@ -16,7 +16,7 @@
 
   const currentUrl = $derived($page.url);
   const siteOrigin = $derived(currentUrl?.origin ?? "");
-  const absoluteNameLight = $derived(siteOrigin ? `${siteOrigin}${nameLight}` : nameLight);
+  const absoluteSocialsCard = $derived(siteOrigin ? `${siteOrigin}${socialsCard}` : socialsCard);
 
   const pageHead = $derived((($page.data as any)?.head) ?? {});
   const pathname = $derived(currentUrl?.pathname || "/");
@@ -32,7 +32,7 @@
     title: pageHead.title ?? routeDefaultTitle,
     description: pageHead.description ?? defaultDescription,
     type: pageHead.type ?? "website",
-    image: pageHead.image ?? absoluteNameLight,
+    image: pageHead.image ?? absoluteSocialsCard,
   });
 </script>
 
@@ -50,7 +50,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={head.title} />
   <meta name="twitter:description" content={head.description} />
-  <meta name="twitter:image" content={head.image} />
+  <meta name="twitter:image:src" content={head.image} />
 </svelte:head>
 
 {@render children()}
