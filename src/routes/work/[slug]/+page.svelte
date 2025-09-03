@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
+  import { fade, fly, scale } from "svelte/transition";
+  import { cubicIn, cubicOut } from "svelte/easing";
   import SvelteMarkdown, {
     defaultRenderers,
     Html,
@@ -111,6 +113,7 @@
 
   let articleRef: HTMLElement;
   let containerRef: HTMLElement;
+  let reduceMotion = $state(false);
 
   const handleDocumentClick = (e: MouseEvent) => {
     if (!articleRef || !containerRef) return;
@@ -123,6 +126,12 @@
   };
 
   onMount(() => {
+    // Respect user preference for reduced motion
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    reduceMotion = mq.matches;
+    const onChange = () => (reduceMotion = mq.matches);
+    mq.addEventListener?.("change", onChange);
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
@@ -134,6 +143,7 @@
       window.removeEventListener("keydown", onKey);
       document.removeEventListener("click", handleDocumentClick, true);
       document.body.style.overflow = original;
+      mq.removeEventListener?.("change", onChange);
     };
   });
 </script>
@@ -143,12 +153,20 @@
   class="fixed inset-0 z-[100] w-dvw h-dvh bg-fill-primary dark:bg-fill-primary-dark sm:bg-fill-primary-dark/40 sm:dark:bg-fill-primary-dark/40 sm:backdrop-blur-sm overflow-visible"
   role="dialog"
   aria-modal="true"
+  in:fade={{ duration: reduceMotion ? 0 : 150 }}
+  out:fade={{ duration: reduceMotion ? 0 : 150 }}
 >
   <div class="absolute inset-0 overflow-y-auto h-full" role="document" tabindex="-1">
-    <article
-      bind:this={articleRef}
-      class="mx-auto w-full sm:w-auto max-w-none sm:max-w-[720px] rounded-none sm:rounded-3xl bg-fill-primary dark:bg-fill-primary-dark text-text-primary dark:text-text-primary-dark p-6 border-0 sm:border border-stroke dark:border-stroke-dark mt-0 mb-0 sm:mt-20 sm:mb-20 min-h-full"
+    <div
+      in:fly={{ y: reduceMotion ? 0 : 18, duration: reduceMotion ? 0 : 200, easing: cubicOut }}
+      out:fly={{ y: reduceMotion ? 0 : 12, duration: reduceMotion ? 0 : 160, easing: cubicIn }}
     >
+      <article
+        bind:this={articleRef}
+        class="mx-auto w-full sm:w-auto max-w-none sm:max-w-[720px] rounded-none sm:rounded-3xl bg-fill-primary dark:bg-fill-primary-dark text-text-primary dark:text-text-primary-dark p-6 border-0 sm:border border-stroke dark:border-stroke-dark mt-0 mb-0 sm:mt-20 sm:mb-20 min-h-full"
+        in:scale={{ start: 0.98, duration: reduceMotion ? 0 : 200, easing: cubicOut }}
+        out:scale={{ start: 0.98, duration: reduceMotion ? 0 : 160, easing: cubicIn }}
+      >
       {#if data.meta?.title || data.meta?.date}
         <header class="">
           {#if data.meta?.title}
@@ -196,6 +214,7 @@
           options={{ breaks: true, gfm: true }}
         />
       </div>
-    </article>
+      </article>
+    </div>
   </div>
 </div>
