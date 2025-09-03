@@ -140,14 +140,14 @@
 
 <div
   bind:this={containerRef}
-  class="fixed inset-0 z-[100] bg-fill-primary-dark/40 backdrop-blur-sm"
+  class="fixed inset-0 z-[100] w-dvw h-dvh bg-fill-primary dark:bg-fill-primary-dark sm:bg-fill-primary-dark/40 sm:dark:bg-fill-primary-dark/40 sm:backdrop-blur-sm overflow-visible"
   role="dialog"
   aria-modal="true"
 >
-  <div class="absolute inset-0 overflow-y-auto" role="document" tabindex="-1">
+  <div class="absolute inset-0 overflow-y-auto h-full" role="document" tabindex="-1">
     <article
       bind:this={articleRef}
-      class="mx-auto max-w-[720px] rounded-3xl bg-fill-primary dark:bg-fill-primary-dark text-text-primary dark:text-text-primary-dark p-6 border border-stroke dark:border-stroke-dark mt-20 mb-20"
+      class="mx-auto w-full sm:w-auto max-w-none sm:max-w-[720px] rounded-none sm:rounded-3xl bg-fill-primary dark:bg-fill-primary-dark text-text-primary dark:text-text-primary-dark p-6 border-0 sm:border border-stroke dark:border-stroke-dark mt-0 mb-0 sm:mt-20 sm:mb-20 min-h-full"
     >
       {#if data.meta?.title || data.meta?.date}
         <header class="">
