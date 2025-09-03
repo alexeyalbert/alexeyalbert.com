@@ -16,16 +16,24 @@
 
   const currentUrl = $derived($page.url);
   const siteOrigin = $derived(currentUrl?.origin ?? "");
-  const screenshotImage = $derived(currentUrl?.href
-    ? `https://webshot.deam.io/${encodeURIComponent(currentUrl.href)}?width=1200&height=630`
-    : `${siteOrigin}/web-app-manifest-512x512.png`);
-  const baseHead = $derived({
-    title: defaultTitle,
-    description: defaultDescription,
-    image: screenshotImage,
-    type: "website",
+  const absoluteNameLight = $derived(siteOrigin ? `${siteOrigin}${nameLight}` : nameLight);
+
+  const pageHead = $derived((($page.data as any)?.head) ?? {});
+  const pathname = $derived(currentUrl?.pathname || "/");
+  const routeDefaultTitle = $derived(
+    pathname === "/"
+      ? "About | Alexey Albert"
+      : (pathname === "/work" || pathname.startsWith("/work/"))
+        ? "Work | Alexey Albert"
+        : defaultTitle,
+  );
+
+  const head = $derived({
+    title: pageHead.title ?? routeDefaultTitle,
+    description: pageHead.description ?? defaultDescription,
+    type: pageHead.type ?? "website",
+    image: pageHead.image ?? absoluteNameLight,
   });
-  const head = $derived({ ...baseHead, ...((($page.data as any)?.head) ?? {}) });
 </script>
 
 <svelte:head>

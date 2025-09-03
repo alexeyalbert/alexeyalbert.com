@@ -59,12 +59,9 @@ export const load: PageServerLoad = async ({ params, url }) => {
   const title = `${titleBase} | Alexey Albert`;
   const description = String((frontmatter as any)?.description ?? extractDescription(content));
   const firstImage = (frontmatter as any)?.image || extractTopImageIfFirstBlock(content);
-  const imagePath = typeof firstImage === "string" && firstImage
-    ? firstImage
-    : "/web-app-manifest-512x512.png";
-  const absoluteImage = imagePath.startsWith("http")
-    ? imagePath
-    : `${url.origin}${imagePath}`;
+  const absoluteImage = typeof firstImage === "string" && firstImage
+    ? (firstImage.startsWith("http") ? firstImage : `${url.origin}${firstImage}`)
+    : undefined; // undefined means use site default from root layout
 
   return {
     slug,
@@ -73,7 +70,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
     head: {
       title,
       description,
-      image: absoluteImage,
+      ...(absoluteImage ? { image: absoluteImage } : {}),
       type: "article",
     },
   };
