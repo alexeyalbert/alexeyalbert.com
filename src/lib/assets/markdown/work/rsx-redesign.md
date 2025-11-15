@@ -54,15 +54,15 @@ Instead, I ended up landing on a tined grain effect. This preserves detail and t
 
 The website was the largest implementation of the brand identity and was the proving ground for the broader redesign.
 
-I used Svelte due to its commitment to performance and simplicity, which will likely be easier to maintain for future marketing teams than if I used something like react, while still providing some much-appreciated conveniences that make development much easier.
+I used Svelte due to its commitment to performance and simplicity, which will likely be easier to maintain for future marketing teams than if I used something like React, while still providing some much-appreciated conveniences that make development much easier.
 
-The website itself is just hosted using nginx on a Oracle OCI free tier VPS. I initially wanted to—and did—use Cloudflare Workers since due to their speed (and being free didn't hurt), but Workers doesn't support custom subdomains outside Cloudflare zones, which is crucial to be able to use our [rsx.skule.ca](https://rsx.skule.ca) subdomain. I then tried Cloudflare Pages, but due to DNS issues, had to just resort to the nginx VPS.
+The website itself is just hosted using nginx on a Oracle OCI free tier VPS. I initially wanted to—and did—use Cloudflare Workers due to their speed (and being free didn't hurt), but Workers doesn't support custom subdomains outside Cloudflare zones, which is crucial to be able to use our [rsx.skule.ca](https://rsx.skule.ca) subdomain. I then tried Cloudflare Pages, but due to DNS issues beyond my control, had to just resort to the nginx VPS.
 
-In order to easily update the site myself, as well as make it as simple as possible for future marketing members/webmasters to update the site, I also setup a very rudementary CI/CD pipeline, identical to the one I use for my personal website. When someone pushes to the [GitHub](https://github.com/rsx-utoronto/rsx-website), it will build the site, copy it over via SCP, and restart the node server with SSH. 
+In order to easily update the site myself, as well as make it as simple as possible for future marketing members/webmasters to update the site, I also setup a very rudementary CI/CD pipeline, identical to the one I use for my personal website. When someone pushes to the [GitHub](https://github.com/rsx-utoronto/rsx-website), it will build the site, copy it over via SCP, and restart the node server with SSH.
 
 This also solves another problem I was having, as due to the VPS being on the free tier, it runs out of RAM while building the website. I also tried adding 2 gigs of swap memory to fix this, but immediately realized it was too slow to be practical, with builds taking excrutiatingly long. The GitHub action *does* take ~3-4 minutes from start to finish, which leaves  much to be desired, but is still much faster than building directly on the VPS ever was or could be. I'd like to get this time down in the future, but for now it works, and waiting a few minutes for the website to be updated globally isn't a huge issue.
 
-
+For analytics, I also setup PostHog and a Cloudflare Worker as a reverse proxy, as adblockers have chosen to filter out calls to PostHog's domains :/
 
 ![RSX Website Landing Page](/images/rsx/website-home.png)
 ![RSX Website Subteams Page](/images/rsx/website-subteams.png)
